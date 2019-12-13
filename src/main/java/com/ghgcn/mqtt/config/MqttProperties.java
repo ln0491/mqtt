@@ -23,7 +23,6 @@ public class MqttProperties {
     private String clientId;
     private String topics;
 
-//    private MqttInboundProperties inbound;
-//    private MqttOutboundProperties outbound;
+
 }
 
