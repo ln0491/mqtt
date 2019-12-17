@@ -32,6 +32,7 @@ public class MqttOutboundConfiguration {
                 new MqttPahoMessageHandler(mqttProperties.getClientId(), mqttPahoClientFactory);
         messageHandler.setAsync(true);
         messageHandler.setDefaultTopic(mqttProperties.getTopics());
+
         return messageHandler;
     }
 

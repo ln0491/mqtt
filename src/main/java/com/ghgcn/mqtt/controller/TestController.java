@@ -18,7 +18,7 @@ public class TestController {
 
     @RequestMapping("/sendMqtt")
     public String sendMqtt(String topic,String  sendData){
-        mqttGateway.sendToMqtt(topic,sendData);
+        mqttGateway.sendToMqtt(topic,sendData,false);
         return "OK";
     }
 }

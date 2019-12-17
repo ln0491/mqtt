@@ -37,6 +37,8 @@ public class MqttInboundConfiguration {
         mqttConnectOptions.setMaxInflight(1000);
         mqttConnectOptions.setUserName(mqttProperties.getUsername());
         mqttConnectOptions.setPassword(mqttProperties.getPassword().toCharArray());
+        //如果要收到离线的消息这里必须设置为false，如果为true就代表一个新的连接，又重新订阅了这个主题只能收到最后一条
+        mqttConnectOptions.setCleanSession(false);
         mqttConnectOptions.setAutomaticReconnect(true);
         return mqttConnectOptions;
     }
@@ -55,8 +57,9 @@ public class MqttInboundConfiguration {
                         mqttPahoClientFactory,inboundTopics);
         adapter.setCompletionTimeout(5000);
         adapter.setConverter(new DefaultPahoMessageConverter());
-        adapter.setQos(1);
+        adapter.setQos(2);
         adapter.setOutputChannel(mqttInputChannel());
+
         return adapter;
     }
 
